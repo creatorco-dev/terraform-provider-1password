@@ -188,13 +188,11 @@ func findExistingOPClient() (string, error) {
 }
 
 func installOPClient(opversion string) (string, error) {
-	if os.Getenv("OP_VERSION") != "" {
-		semVer, err := semver.NewVersion(opversion)
-		if err != nil {
-			return "", err
-		}
-		version = semVer.String()
+	semVer, err := semver.NewVersion(opversion)
+	if err != nil {
+		return "", err
 	}
+	version = semVer.String()
 	binZip := fmt.Sprintf("/tmp/op_%s.zip", version)
 	if _, err := os.Stat(binZip); os.IsNotExist(err) {
 		resp, err := http.Get(fmt.Sprintf(
