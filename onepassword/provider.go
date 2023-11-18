@@ -57,7 +57,7 @@ func Provider() terraform.ResourceProvider {
 			"opversion": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OP_VERSION", "1.4.0"),
+				DefaultFunc: schema.EnvDefaultFunc("OP_VERSION", "1.12.6"),
 				Description: "One password cli version",
 			},
 		},
