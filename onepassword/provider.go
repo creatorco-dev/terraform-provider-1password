@@ -16,6 +16,7 @@ import (
 	"sync"
 
 	"github.com/Masterminds/semver"
+	"github.com/google/uuid"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 )
@@ -194,6 +195,7 @@ func installOPClient(opversion string) (string, error) {
 	}
 	version = semVer.String()
 	binZip := fmt.Sprintf("/tmp/op_%s.zip", version)
+	id := uuid.New()
 	if _, err := os.Stat(binZip); os.IsNotExist(err) {
 		resp, err := http.Get(fmt.Sprintf(
 			"https://cache.agilebits.com/dist/1P/op/pkg/v%s/op_%s_%s_v%s.zip",
@@ -215,11 +217,11 @@ func installOPClient(opversion string) (string, error) {
 		if _, err = io.Copy(out, resp.Body); err != nil {
 			return "", err
 		}
-		if err := unzip(binZip, "/tmp/terraform-provider-onepassword/"+version); err != nil {
+		if err := unzip(binZip, "/tmp/terraform-provider-onepassword/"+id+"/"+version); err != nil {
 			return "", err
 		}
 	}
-	return "/tmp/terraform-provider-onepassword/" + version + "/op", nil
+	return "/tmp/terraform-provider-onepassword/" + id + "/" + version + "/op", nil
 }
 
 func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
