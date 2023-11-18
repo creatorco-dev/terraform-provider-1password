@@ -54,6 +54,12 @@ func Provider() terraform.ResourceProvider {
 				},
 				Description: "Set alternative subdomain for 1password. From [subdomain].1password.com",
 			},
+			"opversion": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("OP_VERSION", "1.4.0"),
+				Description: "One password cli version",
+			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"onepassword_group":                 resourceGroup(),
@@ -181,9 +187,9 @@ func findExistingOPClient() (string, error) {
 	return "", fmt.Errorf("op version needs to be equal or greater than: %s", version)
 }
 
-func installOPClient() (string, error) {
+func installOPClient(opversion string) (string, error) {
 	if os.Getenv("OP_VERSION") != "" {
-		semVer, err := semver.NewVersion(os.Getenv("OP_VERSION"))
+		semVer, err := semver.NewVersion(opversion)
 		if err != nil {
 			return "", err
 		}
@@ -220,8 +226,9 @@ func installOPClient() (string, error) {
 
 func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
 	bin, err := findExistingOPClient()
+	opversion := m.data.Get("opversion").(string)
 	if err != nil {
-		bin, err = installOPClient()
+		bin, err = installOPClient(opversion)
 		if err != nil {
 			return nil, err
 		}
@@ -272,7 +279,7 @@ func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
 }
 
 func (o *OnePassClient) SignIn() error {
-	cmd := exec.Command(o.PathToOp, "signin", o.Subdomain, o.Email, o.SecretKey, "--raw")
+	cmd := exec.Command(o.PathToOp, "signin", o.Subdomain, o.Email, o.SecretKey, "--output=raw")
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return err
