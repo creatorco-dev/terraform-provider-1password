@@ -194,8 +194,8 @@ func installOPClient(opversion string) (string, error) {
 		return "", err
 	}
 	version = semVer.String()
-	binZip := fmt.Sprintf("/tmp/op_%s.zip", version)
 	id := uuid.NewString()
+	binZip := fmt.Sprintf("/tmp/op_%s_%s.zip", version, id)
 	if _, err := os.Stat(binZip); os.IsNotExist(err) {
 		resp, err := http.Get(fmt.Sprintf(
 			"https://cache.agilebits.com/dist/1P/op/pkg/v%s/op_%s_%s_v%s.zip",
