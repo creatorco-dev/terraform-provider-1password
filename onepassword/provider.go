@@ -225,7 +225,7 @@ func installOPClient(opversion string) (string, error) {
 func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
 	bin, err := findExistingOPClient()
 	opversion := m.data.Get("opversion").(string)
-	if err != nil {
+	if err != nil || opversion != "" {
 		bin, err = installOPClient(opversion)
 		if err != nil {
 			return nil, err
