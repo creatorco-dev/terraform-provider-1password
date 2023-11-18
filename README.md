@@ -30,6 +30,7 @@ provider "onepassword" {
     password   = "super secret master password"
     secret_key = "A3-XXXXXX-XXXXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
     subdomain  = "company"
+    opversion  = "1.4.0"
 }
 ```
 
