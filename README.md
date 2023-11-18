@@ -1,7 +1,7 @@
 # Terraform OnePassword Provider
 
-[![GolangCI](https://golangci.com/badges/github.com/anasinnyk/terraform-provider-1password.svg)](https://golangci.com/r/github.com/anasinnyk/terraform-provider-1password)
-[![Build Status](https://travis-ci.com/anasinnyk/terraform-provider-1password.svg?branch=master)](https://travis-ci.com/anasinnyk/terraform-provider-1password)
+[![GolangCI](https://golangci.com/badges/github.com/gwdp/terraform-provider-1password.svg)](https://golangci.com/r/github.com/gwdp/terraform-provider-1password)
+[![Build Status](https://travis-ci.com/gwdp/terraform-provider-1password.svg?branch=master)](https://travis-ci.com/gwdp/terraform-provider-1password)
 
 ## Table of Contents
 
@@ -139,7 +139,7 @@ resource "onepassword_item_common" "this" {
 
     field = {
       name   = "member name"
-      string = "anasinnyk"
+      string = "gwdp"
     }
 
     field = {
@@ -321,7 +321,7 @@ resource "onepassword_item_identity" "this" {
   }
 
   internet = {
-    username = "anasinnyk"
+    username = "gwdp"
     email    = "andriy.nas@gmail.com"
   }
 }

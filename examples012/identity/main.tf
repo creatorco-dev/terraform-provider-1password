@@ -31,7 +31,7 @@ resource "onepassword_item_identity" "this" {
   }
 
   internet {
-    username = "anasinnyk"
+    username = "gwdp"
     email    = "andriy.nas@gmail.com"
   }
 }

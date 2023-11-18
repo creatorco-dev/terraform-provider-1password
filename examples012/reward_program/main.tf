@@ -12,7 +12,7 @@ resource "onepassword_item_common" "this" {
 
     field {
       name   = "member name"
-      string = "anasinnyk"
+      string = "gwdp"
     }
 
     field {

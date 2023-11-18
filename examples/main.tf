@@ -20,7 +20,7 @@ module "document" {
 
 module "login" {
   source   = "./login"
-  login    = "anasinnyk"
+  login    = "gwdp"
   password = "${random_string.password.result}"
   website  = "https://terraform.io"
   vault_id = "${module.vault.new}"
