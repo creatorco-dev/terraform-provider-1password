@@ -44,14 +44,14 @@ func Provider() terraform.ResourceProvider {
 				Description: "Set account secret key",
 			},
 			"subdomain": {
-				Type:        schema.TypeString,
-				Optional:    true,
+				Type:     schema.TypeString,
+				Optional: true,
 				DefaultFunc: func() (interface{}, error) {
 					if v := os.Getenv("OP_SUBDOMAIN"); v != "" {
-					  return v, nil
+						return v, nil
 					}
 					return "my", nil
-				  },
+				},
 				Description: "Set alternative subdomain for 1password. From [subdomain].1password.com",
 			},
 		},
@@ -272,7 +272,7 @@ func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
 }
 
 func (o *OnePassClient) SignIn() error {
-	cmd := exec.Command(o.PathToOp, "signin", o.Subdomain, o.Email, o.SecretKey, "--output=raw")
+	cmd := exec.Command(o.PathToOp, "signin", o.Subdomain, o.Email, o.SecretKey, "--raw")
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return err
