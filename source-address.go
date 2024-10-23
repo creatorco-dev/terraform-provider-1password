@@ -14,6 +14,6 @@
 
 package main
 
-const providerNamespace = "gwdp"
+const providerNamespace = "creatorco"
 const providerSimpleType = "1password"
 const providerType = providerSimpleType

@@ -58,7 +58,7 @@ func Provider() terraform.ResourceProvider {
 			"opversion": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OP_VERSION", "1.12.6"),
+				DefaultFunc: schema.EnvDefaultFunc("OP_VERSION", "2.0.0"),
 				Description: "One password cli version",
 			},
 		},
@@ -198,7 +198,7 @@ func installOPClient(opversion string) (string, error) {
 	binZip := fmt.Sprintf("/tmp/op_%s_%s.zip", version, id)
 	if _, err := os.Stat(binZip); os.IsNotExist(err) {
 		resp, err := http.Get(fmt.Sprintf(
-			"https://cache.agilebits.com/dist/1P/op/pkg/v%s/op_%s_%s_v%s.zip",
+			"https://cache.agilebits.com/dist/1P/op2/pkg/v%s/op_%s_%s_v%s.zip",
 			version,
 			runtime.GOOS,
 			runtime.GOARCH,

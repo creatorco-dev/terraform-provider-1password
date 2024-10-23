@@ -20,7 +20,7 @@
 
 ## Provider
 
-Terraform provider for 1password usage with your infrastructure, for example you can share password from your admin panel via some vault in you 1password company account. This provider based on 1Password CLI client version 0.5.5, but you can rewrite it by env variable `OP_VERSION`
+Terraform provider for 1password usage with your infrastructure, for example you can share password from your admin panel via some vault in you 1password company account. This provider based on 1Password CLI client version 2.x.x, but you can rewrite it by env variable `OP_VERSION`
 
 ### Example Usage
 
@@ -30,7 +30,7 @@ provider "onepassword" {
     password   = "super secret master password"
     secret_key = "A3-XXXXXX-XXXXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
     subdomain  = "company"
-    opversion  = "1.4.0"
+    opversion  = "2.x.x"
 }
 ```
 
