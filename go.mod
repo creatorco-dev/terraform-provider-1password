@@ -1,6 +1,6 @@
 module github.com/gwdp/terraform-provider-1password
 
-go 1.12
+go 1.14
 
 require (
 	github.com/Masterminds/semver v1.4.2
