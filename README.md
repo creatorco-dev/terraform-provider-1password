@@ -1,8 +1,5 @@
 # Terraform OnePassword Provider
 
-[![GolangCI](https://golangci.com/badges/github.com/gwdp/terraform-provider-1password.svg)](https://golangci.com/r/github.com/gwdp/terraform-provider-1password)
-[![Build Status](https://travis-ci.com/gwdp/terraform-provider-1password.svg?branch=master)](https://travis-ci.com/gwdp/terraform-provider-1password)
-
 ## Table of Contents
 
 [Provider](#Provider)

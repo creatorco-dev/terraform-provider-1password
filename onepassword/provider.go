@@ -279,7 +279,7 @@ func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
 }
 
 func (o *OnePassClient) SignIn() error {
-	cmd := exec.Command(o.PathToOp, "signin", o.Subdomain, o.Email, o.SecretKey, "--output=raw")
+	cmd := exec.Command(o.PathToOp, "signin", o.Subdomain, o.Email, o.SecretKey, "--raw")
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return err
