@@ -279,15 +279,8 @@ func (m *Meta) NewOnePassClient() (*OnePassClient, error) {
 }
 
 func (o *OnePassClient) SignIn() error {
-	// add the user to the CLI
-	addCmd := exec.Command(o.PathToOp, "account", "add", "--address", o.Subdomain, "--email", o.Email, "--secret-key", o.SecretKey)
-	err := addCmd.Run()
-	if err != nil {
-		log.Fatalf("Add user to 1Password failed: %v\n", err)
-	}
-
 	// Signin into the CLI
-	cmd := exec.Command(o.PathToOp, "signin", "--raw")
+	cmd := exec.Command(o.PathToOp, "account", "add", "--address", o.Subdomain, "--email", o.Email, "--secret-key", o.SecretKey, "--signin", "--raw")
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return err
