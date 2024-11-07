@@ -333,6 +333,6 @@ func getID(d *schema.ResourceData) string {
 }
 
 func (o *OnePassClient) Delete(resource string, id string) error {
-	_, err := o.runCmd(opPasswordDelete, resource, id)
+	_, err := o.runCmd(resource, opPasswordDelete, id)
 	return err
 }

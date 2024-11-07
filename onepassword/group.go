@@ -25,7 +25,7 @@ type Group struct {
 // ReadGroup gets an existing 1Password Group
 func (o *OnePassClient) ReadGroup(id string) (*Group, error) {
 	group := &Group{}
-	res, err := o.runCmd(opPasswordGet, GroupResource, id)
+	res, err := o.runCmd(GroupResource, opPasswordGet, id)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +37,7 @@ func (o *OnePassClient) ReadGroup(id string) (*Group, error) {
 
 // CreateGroup creates a new 1Password Group
 func (o *OnePassClient) CreateGroup(v *Group) (*Group, error) {
-	args := []string{opPasswordCreate, GroupResource, v.Name}
+	args := []string{GroupResource, opPasswordCreate, v.Name}
 	res, err := o.runCmd(args...)
 	if err != nil {
 		return nil, err

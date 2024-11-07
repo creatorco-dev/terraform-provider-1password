@@ -126,8 +126,8 @@ type Overview struct {
 func (o *OnePassClient) ReadItem(id string, vaultID string) (*Item, error) {
 	item := &Item{}
 	args := []string{
-		opPasswordGet,
 		ItemResource,
+		opPasswordGet,
 		id,
 	}
 
@@ -242,8 +242,8 @@ func (o *OnePassClient) CreateItem(v *Item) error {
 	}
 
 	args := []string{
-		opPasswordCreate,
 		ItemResource,
+		opPasswordCreate,
 		string(template),
 		detailsHash,
 		fmt.Sprintf("--title=%s", v.Overview.Title),
@@ -269,8 +269,8 @@ func (o *OnePassClient) CreateItem(v *Item) error {
 
 func (o *OnePassClient) ReadDocument(id string) (string, error) {
 	content, err := o.runCmd(
-		opPasswordGet,
 		DocumentResource,
+		opPasswordGet,
 		id,
 	)
 	return string(content), err
@@ -278,8 +278,8 @@ func (o *OnePassClient) ReadDocument(id string) (string, error) {
 
 func (o *OnePassClient) CreateDocument(v *Item, filePath string) error {
 	args := []string{
-		opPasswordCreate,
 		DocumentResource,
+		opPasswordCreate,
 		filePath,
 		fmt.Sprintf("--title=%s", v.Overview.Title),
 		fmt.Sprintf("--tags=%s", strings.Join(v.Overview.Tags, ",")),
